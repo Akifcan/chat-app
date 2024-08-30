@@ -1,14 +1,13 @@
 import Portal from "../portal";
 import Conversation from "./conversation";
-import Fab from "./fab";
 
 function Chat() {
   return (
-    <>
+    <Portal>
       <Conversation />
       {/* <Fab /> */}
-    </>
+    </Portal>
   );
 }
 
-export default Portal(Chat);
+export default Chat;

@@ -1,25 +1,19 @@
-import { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import { ReactNode, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
-const Portal = (Component: any) => (props: any) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+export default function Portal({
+  children,
+}: Readonly<{ children: ReactNode }>) {
   const [mounted, setMounted] = useState(false);
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     setTimeout(() => {
       setMounted(true);
     }, 0);
   }, []);
-
   if (!mounted) {
     return null;
   }
 
-  return ReactDOM.createPortal(
-    <Component {...props} />,
-    document.getElementById("portal")!
-  );
-};
-
-export default Portal;
+  return createPortal(children, document.getElementById("portal")!);
+}
