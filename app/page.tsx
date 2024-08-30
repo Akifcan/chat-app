@@ -1,3 +1,9 @@
+import Chat from "./components/chat/chat";
+
 export default function Home() {
-  return <main>oksaf</main>;
+  return (
+    <main>
+      <Chat />
+    </main>
+  );
 }
