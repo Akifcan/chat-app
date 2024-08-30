@@ -20,6 +20,7 @@ export default function ProductDetailMessage({
     setProduct(currentProduct);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(handleProductDetail, []);
 
   if (product === undefined) {
