@@ -1,6 +1,6 @@
 export const useScrollDown = (targetElementId: string) => {
-  const scrollToBottom = () => {
-    const element = document.getElementById("conversation-list");
+  const scrollToBottom = (delay = 0) => {
+    const element = document.getElementById(targetElementId);
     if (!element) {
       return console.error("target element not found!");
     }
@@ -9,7 +9,7 @@ export const useScrollDown = (targetElementId: string) => {
         behavior: "smooth",
         top: element.scrollHeight * 99999,
       });
-    }, 0);
+    }, delay);
   };
 
   return {

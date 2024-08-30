@@ -6,6 +6,7 @@ import {
   categoriesData,
   productsData,
 } from "@/store/features/conversation/conversation.data";
+import { useScrollDown } from "@/app/hooks/use-scroll-down";
 
 const ProductWrapper = styled.div`
   display: flex;
@@ -33,6 +34,7 @@ const ProductImage = styled.div`
 
 export default function SuggestedProductsMessage(): JSX.Element {
   const [products, setProducts] = useState<ProductProps[]>();
+  const { scrollToBottom } = useScrollDown("conversation-list");
 
   const handleSuggestions = () => {
     const productList: ProductProps[] = [];
@@ -48,6 +50,7 @@ export default function SuggestedProductsMessage(): JSX.Element {
     }
 
     setProducts(productList);
+    scrollToBottom(200);
   };
 
   useEffect(handleSuggestions, []);

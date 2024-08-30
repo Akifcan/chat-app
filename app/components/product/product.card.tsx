@@ -16,6 +16,11 @@ const ProductMeta = styled.div`
   border-radius: 8px;
   color: white;
   flex: 1;
+  transition: background-color 400ms linear;
+
+  &:hover {
+    background-color: var(--color-secondary);
+  }
 `;
 
 const ProductImage = styled.div`
@@ -33,12 +38,7 @@ export default function ProductCard({
   return (
     <ProductWrapper>
       <ProductImage>
-        <Image
-          src={product.images[0]}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          alt={"asdf"}
-        />
+        <Image src={product.images[0]} fill sizes="100%" alt={product.name} />
       </ProductImage>
       <ProductMeta>
         <h3>{product.name}</h3>
