@@ -1,11 +1,14 @@
-import styles from "./chat.module.css";
-import AssistantIcon from "./icons/assistant.icon";
-export default function Chat() {
+import Portal from "../portal";
+import Conversation from "./conversation";
+import Fab from "./fab";
+
+function Chat() {
   return (
     <>
-      <button className={styles["fab"]}>
-        <AssistantIcon />
-      </button>
+      <Conversation />
+      {/* <Fab /> */}
     </>
   );
 }
+
+export default Portal(Chat);
