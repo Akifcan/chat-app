@@ -27,10 +27,16 @@ export default function SelectCategoryMessage(): JSX.Element {
   const handleListProducts = (category: CategoryProps) => {
     dispatch(
       addNewMessage({
+        from: "user",
+        id: Math.random(),
+        text: `Could you list the <b>${category.name}</b> products for me?`,
+      })
+    );
+    dispatch(
+      addNewMessage({
         from: "bot",
         id: Math.random(),
         action: `/product ${category.id}`,
-        text: `Could you list the <b>${category.name}</b> products for me?`,
       })
     );
   };

@@ -75,7 +75,7 @@ export default function ConversationFooter(): JSX.Element {
           from: "bot",
           id: Math.random(),
           action: "/product",
-          text: "Could you list the relevant products for me?",
+          text: "Here top pick products for you...",
         })
       );
     }

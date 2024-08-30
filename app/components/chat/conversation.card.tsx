@@ -27,7 +27,9 @@ const Avatar = styled.div<{ $position?: Position }>`
   background-color: var(--color-primary);
   border-radius: 50%;
   background-image: url("${(props) =>
-    props.$position === "left" ? "/robot.png" : "/user-avatar.png"}");
+    props.$position === "left"
+      ? "/avatars/robot.png"
+      : "/avatars/user-avatar.png"}");
   background-size: contain;
 `;
 
@@ -46,11 +48,11 @@ export default function ConversationCard({
             dangerouslySetInnerHTML={{ __html: message.text }}
           />
         )}
-        {message.action === "/greeting" && <GreetingMessage />}
-        {message.action === "/help" && <HelpMessage />}
-        {message.action === "/select" && <SelectCategoryMessage />}
-        {message.action === "not-found-command" && <NotFoundCommandMessage />}
-        {message.action === "/product" && <ProductsMessage />}
+        {message?.action === "/greeting" && <GreetingMessage />}
+        {message?.action === "/help" && <HelpMessage />}
+        {message?.action === "/select" && <SelectCategoryMessage />}
+        {message?.action === "not-found-command" && <NotFoundCommandMessage />}
+        {message?.action?.startsWith("/product") && <ProductsMessage />}
       </div>
     </Container>
   );
