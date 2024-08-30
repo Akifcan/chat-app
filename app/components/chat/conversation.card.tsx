@@ -1,16 +1,14 @@
+import { useAppSelector } from "@/store";
 import styles from "./chat.module.css";
 
 export default function ConversationCard({
   position,
 }: Readonly<{ position: "left" | "right" }>): JSX.Element {
+  const message = useAppSelector((state) => state.conversation.messages);
   return (
     <div className={[styles["conversation-card"], styles[position]].join(" ")}>
       <div className={styles["avatar"]}></div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
-        commodi temporibus illo. Doloribus unde ullam veritatis recusandae eaque
-        commodi voluptatibus.
-      </p>
+      <p>{message}</p>
     </div>
   );
 }
