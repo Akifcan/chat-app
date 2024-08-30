@@ -1,4 +1,7 @@
+import { useAppDispatch } from "@/store";
 import { categories } from "@/store/features/conversation/conversation.data";
+import { addNewMessage } from "@/store/features/conversation/conversation.slice";
+import { CategoryProps } from "@/store/features/conversation/conversation.types";
 import styled from "styled-components";
 
 const SelectItem = styled.button`
@@ -19,10 +22,28 @@ const SelectItem = styled.button`
 `;
 
 export default function SelectCategoryMessage(): JSX.Element {
+  const dispatch = useAppDispatch();
+
+  const handleListProducts = (category: CategoryProps) => {
+    dispatch(
+      addNewMessage({
+        from: "bot",
+        id: Math.random(),
+        action: `/product ${category.id}`,
+        text: `Could you list the <b>${category.name}</b> products for me?`,
+      })
+    );
+  };
+
   return (
     <div className="flex column" style={{ gap: ".3rem" }}>
       {categories.map((category) => (
-        <SelectItem key={category.id}>{category.name}</SelectItem>
+        <SelectItem
+          key={category.id}
+          onClick={() => handleListProducts(category)}
+        >
+          {category.name}
+        </SelectItem>
       ))}
     </div>
   );

@@ -1,4 +1,6 @@
-export const categories = [
+import { CategoryProps } from "./conversation.types";
+
+export const categories: CategoryProps[] = [
   {
     id: 1,
     name: "Phones",

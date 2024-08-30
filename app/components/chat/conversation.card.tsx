@@ -4,8 +4,11 @@ import HelpMessage from "./conversation-types/help.message";
 import SelectCategoryMessage from "./conversation-types/select-category.message";
 import styled from "styled-components";
 import NotFoundCommandMessage from "./conversation-types/not-found-command.message";
+import ProductsMessage from "./conversation-types/products.message";
 
-const Container = styled.div<{ $position?: "left" | "right" }>`
+type Position = "left" | "right";
+
+const Container = styled.div<{ $position?: Position }>`
   padding: 1rem;
   border-radius: 8px;
   display: flex;
@@ -18,11 +21,14 @@ const Container = styled.div<{ $position?: "left" | "right" }>`
     props.$position === "left" ? "row" : "row-reverse"};
 `;
 
-const Avatar = styled.div`
+const Avatar = styled.div<{ $position?: Position }>`
   width: 50px;
   height: 50px;
-  background-color: red;
+  background-color: var(--color-primary);
   border-radius: 50%;
+  background-image: url("${(props) =>
+    props.$position === "left" ? "/robot.png" : "/user-avatar.png"}");
+  background-size: contain;
 `;
 
 export default function ConversationCard({
@@ -31,15 +37,20 @@ export default function ConversationCard({
   message: MessageProps;
 }>): JSX.Element {
   return (
-    // <div className={[styles["conversation-card"], styles[position]].join(" ")}>
     <Container $position={message.from === "bot" ? "left" : "right"}>
-      <Avatar />
+      <Avatar $position={message.from === "bot" ? "left" : "right"} />
       <div className="flex-1">
-        {message.text && <p className="mb-1">{message.text}</p>}
+        {message.text && (
+          <p
+            className="mb-1"
+            dangerouslySetInnerHTML={{ __html: message.text }}
+          />
+        )}
         {message.action === "/greeting" && <GreetingMessage />}
         {message.action === "/help" && <HelpMessage />}
         {message.action === "/select" && <SelectCategoryMessage />}
         {message.action === "not-found-command" && <NotFoundCommandMessage />}
+        {message.action === "/product" && <ProductsMessage />}
       </div>
     </Container>
   );

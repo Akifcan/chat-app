@@ -37,45 +37,56 @@ export default function ConversationFooter(): JSX.Element {
 
   const handleBotResponse = (text: string) => {
     const action = text as MessageAction;
-    switch (action) {
-      case "/help":
-        dispatch(
-          addNewMessage({
-            from: "bot",
-            id: Math.random(),
-            action: "/help",
-          })
-        );
-        break;
-      case "/greeting":
-        dispatch(
-          addNewMessage({
-            from: "bot",
-            id: Math.random(),
-            action: "/greeting",
-          })
-        );
-        break;
-      case "/select":
-        dispatch(
-          addNewMessage({
-            from: "bot",
-            id: Math.random(),
-            action: "/select",
-            text: "Please select a category from the list",
-          })
-        );
-        break;
-      default:
-        dispatch(
-          addNewMessage({
-            from: "bot",
-            id: Math.random(),
-            action: "not-found-command",
-          })
-        );
-        break;
+
+    if (action === "/help") {
+      return dispatch(
+        addNewMessage({
+          from: "bot",
+          id: Math.random(),
+          action: "/help",
+        })
+      );
     }
+
+    if (action === "/greeting") {
+      return dispatch(
+        addNewMessage({
+          from: "bot",
+          id: Math.random(),
+          action: "/greeting",
+        })
+      );
+    }
+
+    if (action === "/select") {
+      return dispatch(
+        addNewMessage({
+          from: "bot",
+          id: Math.random(),
+          action: "/select",
+          text: "Please select a category from the list",
+        })
+      );
+    }
+
+    if (action.startsWith("/product")) {
+      return dispatch(
+        addNewMessage({
+          from: "bot",
+          id: Math.random(),
+          action: "/product",
+          text: "Could you list the relevant products for me?",
+        })
+      );
+    }
+
+    return dispatch(
+      addNewMessage({
+        from: "bot",
+        id: Math.random(),
+        action: "not-found-command",
+      })
+    );
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -88,16 +99,7 @@ export default function ConversationFooter(): JSX.Element {
       })
     );
     handleBotResponse(text);
-    setTimeout(() => {
-      const conversationList = document.getElementById("conversation-list");
-
-      conversationList?.scrollTo({
-        behavior: "smooth",
-        top: conversationList.scrollHeight * 99999,
-      });
-
-      setText("");
-    }, 0);
+    setText("");
   };
 
   return (

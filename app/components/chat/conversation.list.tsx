@@ -2,6 +2,7 @@ import { useAppSelector } from "@/store";
 import styles from "./chat.module.css";
 import ConversationCard from "./conversation.card";
 import styled from "styled-components";
+import { useEffect } from "react";
 
 const Container = styled.div`
   flex: 1;
@@ -16,6 +17,15 @@ const Container = styled.div`
 
 export default function ConversationList(): JSX.Element {
   const messages = useAppSelector((state) => state.conversation.messages);
+
+  useEffect(() => {
+    const conversationList = document.getElementById("conversation-list");
+
+    conversationList?.scrollTo({
+      behavior: "smooth",
+      top: conversationList.scrollHeight * 99999,
+    });
+  }, [messages]);
 
   return (
     <Container id="conversation-list">

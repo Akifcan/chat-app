@@ -1,4 +1,5 @@
 export type MessageFrom = "user" | "bot";
+
 export type MessageAction =
   | "/select"
   | "/image"
@@ -8,11 +9,16 @@ export type MessageAction =
   | "/help"
   | "not-found-command";
 
+export interface CategoryProps {
+  id: number;
+  name: string;
+}
+
 export interface MessageProps {
   id: number;
   from: MessageFrom;
-  action?: MessageAction;
-  text?: string | MessageAction;
+  action?: MessageAction | string;
+  text?: string;
 }
 
 export interface ConversationState {
