@@ -28,6 +28,7 @@ export default function SuggestedProductsMessage(): JSX.Element {
     scrollToBottom(200);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(handleSuggestions, []);
 
   if (!products) {
