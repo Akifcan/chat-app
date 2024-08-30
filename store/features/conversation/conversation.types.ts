@@ -9,6 +9,14 @@ export type MessageAction =
   | "/help"
   | "not-found-command";
 
+export interface ProductProps {
+  id: number;
+  categoryId: number;
+  name: string;
+  price: string;
+  images: string[];
+}
+
 export interface CategoryProps {
   id: number;
   name: string;

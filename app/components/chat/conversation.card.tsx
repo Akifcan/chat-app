@@ -4,7 +4,7 @@ import HelpMessage from "./conversation-types/help.message";
 import SelectCategoryMessage from "./conversation-types/select-category.message";
 import styled from "styled-components";
 import NotFoundCommandMessage from "./conversation-types/not-found-command.message";
-import ProductsMessage from "./conversation-types/products.message";
+import SuggestedProductsMessage from "./conversation-types/suggested-products.message";
 
 type Position = "left" | "right";
 
@@ -52,7 +52,7 @@ export default function ConversationCard({
         {message?.action === "/help" && <HelpMessage />}
         {message?.action === "/select" && <SelectCategoryMessage />}
         {message?.action === "not-found-command" && <NotFoundCommandMessage />}
-        {message?.action?.startsWith("/product") && <ProductsMessage />}
+        {message?.action === "/product" && <SuggestedProductsMessage />}
       </div>
     </Container>
   );

@@ -69,12 +69,12 @@ export default function ConversationFooter(): JSX.Element {
       );
     }
 
-    if (action.startsWith("/product")) {
+    if (action === "/product") {
       return dispatch(
         addNewMessage({
           from: "bot",
           id: Math.random(),
-          action: "/product",
+          action: text,
           text: "Here top pick products for you...",
         })
       );

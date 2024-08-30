@@ -1,6 +1,6 @@
-import { CategoryProps } from "./conversation.types";
+import { CategoryProps, ProductProps } from "./conversation.types";
 
-export const categories: CategoryProps[] = [
+export const categoriesData: CategoryProps[] = [
   {
     id: 1,
     name: "Phones",
@@ -23,7 +23,7 @@ export const categories: CategoryProps[] = [
   },
 ];
 
-export const products = [
+export const productsData: ProductProps[] = [
   {
     id: 1,
     categoryId: 1,

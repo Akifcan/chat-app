@@ -1,5 +1,5 @@
 import { useAppDispatch } from "@/store";
-import { categories } from "@/store/features/conversation/conversation.data";
+import { categoriesData } from "@/store/features/conversation/conversation.data";
 import { addNewMessage } from "@/store/features/conversation/conversation.slice";
 import { CategoryProps } from "@/store/features/conversation/conversation.types";
 import styled from "styled-components";
@@ -43,7 +43,7 @@ export default function SelectCategoryMessage(): JSX.Element {
 
   return (
     <div className="flex column" style={{ gap: ".3rem" }}>
-      {categories.map((category) => (
+      {categoriesData.map((category) => (
         <SelectItem
           key={category.id}
           onClick={() => handleListProducts(category)}
