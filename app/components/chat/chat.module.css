@@ -163,6 +163,11 @@
   padding-inline: 1rem;
   transition: background-color 500ms linear;
   border-bottom-right-radius: var(--radius);
+  transition: opacity 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.send-message-button:disabled {
+  opacity: 0.5;
 }
 
 .send-message-button:hover {

@@ -6,13 +6,13 @@ export default function ConversationList(): JSX.Element {
   const messages = useAppSelector((state) => state.conversation.messages);
 
   return (
-    <div className={styles["conversation-list"]}>
+    <div className={styles["conversation-list"]} id="conversation-list">
       {messages.map((message) => {
         return (
           <ConversationCard
             message={message}
             key={message.id}
-            position="left"
+            position={message.from === "bot" ? "left" : "right"}
           />
         );
       })}

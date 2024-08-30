@@ -15,7 +15,7 @@ export default function ConversationCard({
     <div className={[styles["conversation-card"], styles[position]].join(" ")}>
       <div className={styles["avatar"]}></div>
       {message.text && <p>{message.text}</p>}
-      {message.action === "greeting" && <GreetingMessage />}
+      {message.action === "/greeting" && <GreetingMessage />}
       {message.action === "/help" && <HelpMessage />}
     </div>
   );

@@ -8,6 +8,9 @@ export default function GreetingMessage(): JSX.Element {
           For view categories please type <b>/select</b>.
         </li>
         <li>
+          For view most demand products please type <b>/product</b>.
+        </li>
+        <li>
           For view more product images please type <b>/image [id]</b>.
         </li>
         <li>

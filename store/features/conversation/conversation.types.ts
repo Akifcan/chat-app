@@ -4,14 +4,14 @@ export type MessageAction =
   | "/image"
   | "text"
   | "/product"
-  | "greeting"
+  | "/greeting"
   | "/help";
 
 export interface MessageProps {
   id: number;
   from: MessageFrom;
-  action: MessageAction;
-  text?: string;
+  action?: MessageAction;
+  text?: string | MessageAction;
 }
 
 export interface ConversationState {

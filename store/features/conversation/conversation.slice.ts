@@ -5,8 +5,8 @@ const initialState: ConversationState = {
   messages: [
     {
       id: Math.random(),
-      from: "user",
-      action: "greeting",
+      from: "bot",
+      action: "/greeting",
     },
   ],
 };
@@ -16,7 +16,7 @@ export const conversationSlice = createSlice({
   initialState,
   reducers: {
     addNewMessage: (state, action: PayloadAction<MessageProps>) => {
-      // state.messages = " action.payload";
+      state.messages = [...state.messages, action.payload];
     },
   },
 });
