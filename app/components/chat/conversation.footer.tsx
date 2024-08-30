@@ -8,7 +8,12 @@ export default function ConversationFooter(): JSX.Element {
       className={styles["conversation-footer"]}
     >
       <input placeholder="Enter your text here..." type="text" />
-      <button type="submit" className={styles["send-message-button"]}>
+      <button
+        aria-label="Click this button for send the your message"
+        title="Click this button for send the your message"
+        type="submit"
+        className={styles["send-message-button"]}
+      >
         <SendIcon />
       </button>
     </form>

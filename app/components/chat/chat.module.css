@@ -89,20 +89,25 @@
   background-color: var(--color-primary);
   color: white;
   padding: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .conversation-list {
   flex: 1;
   background-color: white;
   overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .conversation-footer {
   display: flex;
-  border: 2px solid var(--color-primary);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
-  overflow: hidden;
 }
 
 .conversation-footer input {
@@ -110,6 +115,8 @@
   border: none;
   min-height: 50px;
   text-indent: 10px;
+  border-bottom-left-radius: var(--radius);
+  border: 2px solid var(--color-primary);
 }
 
 .send-message-button {
@@ -117,9 +124,47 @@
   background-color: var(--color-primary);
   padding-inline: 1rem;
   transition: background-color 500ms linear;
+  border-bottom-right-radius: var(--radius);
 }
 
 .send-message-button:hover {
   background-color: var(--color-secondary);
   cursor: pointer;
+}
+
+.close-button {
+  border: none;
+  background-color: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.conversation-card {
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  gap: 1rem;
+}
+
+.conversation-card.left {
+  background-color: thistle;
+}
+
+.conversation-card.right {
+  background-color: rgb(214, 162, 214);
+  flex-direction: row-reverse;
+}
+
+.conversation-card p {
+  flex: 1;
+}
+
+.conversation-card .avatar {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  border-radius: 50%;
 }
