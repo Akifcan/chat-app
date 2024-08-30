@@ -4,6 +4,7 @@ import { useAppDispatch } from "@/store";
 import { addNewMessage } from "@/store/features/conversation/conversation.slice";
 import { MessageAction } from "@/store/features/conversation/conversation.types";
 import styled from "styled-components";
+import { IMAGE_QUERY_REGEX } from "@/store/features/conversation/conversation.queries";
 
 const Form = styled.form`
   display: flex;
@@ -76,6 +77,16 @@ export default function ConversationFooter(): JSX.Element {
           id: Math.random(),
           action: text,
           text: "Here top pick products for you...",
+        })
+      );
+    }
+
+    if (action.match(IMAGE_QUERY_REGEX)) {
+      return dispatch(
+        addNewMessage({
+          from: "bot",
+          id: Math.random(),
+          action: text,
         })
       );
     }

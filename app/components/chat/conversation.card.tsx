@@ -5,6 +5,8 @@ import SelectCategoryMessage from "./conversation-types/select-category.message"
 import styled from "styled-components";
 import NotFoundCommandMessage from "./conversation-types/not-found-command.message";
 import SuggestedProductsMessage from "./conversation-types/suggested-products.message";
+import { IMAGE_QUERY_REGEX } from "@/store/features/conversation/conversation.queries";
+import ProductDetailMessage from "./conversation-types/product-detail.message";
 
 type Position = "left" | "right";
 
@@ -38,6 +40,9 @@ export default function ConversationCard({
 }: Readonly<{
   message: MessageProps;
 }>): JSX.Element {
+  const IS_IMAGE_QUERY =
+    message.action && message.action.match(IMAGE_QUERY_REGEX);
+
   return (
     <Container $position={message.from === "bot" ? "left" : "right"}>
       <Avatar $position={message.from === "bot" ? "left" : "right"} />
@@ -48,11 +53,16 @@ export default function ConversationCard({
             dangerouslySetInnerHTML={{ __html: message.text }}
           />
         )}
+
+        {/* For Static Commands */}
         {message?.action === "/greeting" && <GreetingMessage />}
         {message?.action === "/help" && <HelpMessage />}
         {message?.action === "/select" && <SelectCategoryMessage />}
         {message?.action === "not-found-command" && <NotFoundCommandMessage />}
         {message?.action === "/product" && <SuggestedProductsMessage />}
+
+        {/* For Queries */}
+        {IS_IMAGE_QUERY && <ProductDetailMessage command={message.action!} />}
       </div>
     </Container>
   );
