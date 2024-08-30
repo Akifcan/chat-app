@@ -23,6 +23,7 @@ export default function ConversationList(): JSX.Element {
 
   useEffect(() => {
     scrollToBottom();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
 
   return (
