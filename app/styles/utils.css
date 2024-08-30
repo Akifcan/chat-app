@@ -1,0 +1,15 @@
+.flex-1 {
+  flex: 1;
+}
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.mb-1 {
+  margin-block-end: 1rem;
+}

@@ -1,5 +1,26 @@
+import styled from "styled-components";
 import styles from "./chat.module.css";
 import CloseIcon from "./icons/close.icon";
+
+const CloseButton = styled.button`
+  border: none;
+  background-color: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+`;
+
+const Container = styled.div`
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  background-color: var(--color-primary);
+  color: white;
+  padding: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 export default function ConversationHeader({
   onClose,
@@ -17,16 +38,15 @@ export default function ConversationHeader({
   };
 
   return (
-    <div className={styles["conversation--header"]}>
+    <Container>
       <h2>Chat</h2>
-      <button
+      <CloseButton
         onClick={handleClose}
-        className={styles["close-button"]}
         aria-label="Click for close the chat window"
         title="Click for close the chat window"
       >
         <CloseIcon />
-      </button>
-    </div>
+      </CloseButton>
+    </Container>
   );
 }

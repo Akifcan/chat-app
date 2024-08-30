@@ -1,9 +1,35 @@
 import { FormEvent, useState } from "react";
-import styles from "./chat.module.css";
 import SendIcon from "./icons/send.icon";
 import { useAppDispatch } from "@/store";
 import { addNewMessage } from "@/store/features/conversation/conversation.slice";
 import { MessageAction } from "@/store/features/conversation/conversation.types";
+import styled from "styled-components";
+
+const Form = styled.form`
+  display: flex;
+`;
+
+const SendMessageButton = styled.button`
+  border: none;
+  background-color: var(--color-primary);
+  padding-inline: 1rem;
+  transition: background-color 500ms linear;
+  border-bottom-right-radius: var(--radius);
+  transition: opacity 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+
+  &:disabled {
+    opacity: 0.5;
+  }
+`;
+
+const Input = styled.input`
+  flex: 1;
+  border: none;
+  min-height: 50px;
+  text-indent: 10px;
+  border-bottom-left-radius: var(--radius);
+  border: 2px solid var(--color-primary);
+`;
 
 export default function ConversationFooter(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -21,7 +47,25 @@ export default function ConversationFooter(): JSX.Element {
           })
         );
         break;
-
+      case "/greeting":
+        dispatch(
+          addNewMessage({
+            from: "bot",
+            id: Math.random(),
+            action: "/greeting",
+          })
+        );
+        break;
+      case "/select":
+        dispatch(
+          addNewMessage({
+            from: "bot",
+            id: Math.random(),
+            action: "/select",
+            text: "Please select a category from the list",
+          })
+        );
+        break;
       default:
         dispatch(
           addNewMessage({
@@ -57,15 +101,14 @@ export default function ConversationFooter(): JSX.Element {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles["conversation-footer"]}>
+    <Form onSubmit={handleSubmit}>
       <datalist id="commands">
         <option value="/help"></option>
         <option value="/greeting"></option>
         <option value="/product"></option>
         <option value="/select"></option>
       </datalist>
-
-      <input
+      <Input
         list="commands"
         autoComplete="true"
         value={text}
@@ -74,15 +117,14 @@ export default function ConversationFooter(): JSX.Element {
         placeholder="Enter your text here..."
         type="text"
       />
-      <button
+      <SendMessageButton
         disabled={!text.length}
         aria-label="Click this button for send the your message"
         title="Click this button for send the your message"
         type="submit"
-        className={styles["send-message-button"]}
       >
         <SendIcon />
-      </button>
-    </form>
+      </SendMessageButton>
+    </Form>
   );
 }
