@@ -1,16 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ConversationState } from "./conversation.types";
+import { ConversationState, MessageProps } from "./conversation.types";
 
 const initialState: ConversationState = {
-  messages: "",
+  messages: [
+    {
+      id: Math.random(),
+      from: "user",
+      action: "greeting",
+    },
+  ],
 };
 
 export const conversationSlice = createSlice({
   name: "conversation",
   initialState,
   reducers: {
-    addNewMessage: (state, action: PayloadAction<string>) => {
-      state.messages = " action.payload";
+    addNewMessage: (state, action: PayloadAction<MessageProps>) => {
+      // state.messages = " action.payload";
     },
   },
 });
