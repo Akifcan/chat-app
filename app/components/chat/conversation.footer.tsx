@@ -71,7 +71,7 @@ export default function ConversationFooter(): JSX.Element {
           addNewMessage({
             from: "bot",
             id: Math.random(),
-            action: "/help",
+            action: "not-found-command",
           })
         );
         break;

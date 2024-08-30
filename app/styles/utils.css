@@ -13,3 +13,7 @@
 .mb-1 {
   margin-block-end: 1rem;
 }
+
+.selectable-text {
+  user-select: all;
+}

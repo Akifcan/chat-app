@@ -3,6 +3,7 @@ import GreetingMessage from "./conversation-types/greeting.message";
 import HelpMessage from "./conversation-types/help.message";
 import SelectCategoryMessage from "./conversation-types/select-category.message";
 import styled from "styled-components";
+import NotFoundCommandMessage from "./conversation-types/not-found-command.message";
 
 const Container = styled.div<{ $position?: "left" | "right" }>`
   padding: 1rem;
@@ -38,6 +39,7 @@ export default function ConversationCard({
         {message.action === "/greeting" && <GreetingMessage />}
         {message.action === "/help" && <HelpMessage />}
         {message.action === "/select" && <SelectCategoryMessage />}
+        {message.action === "not-found-command" && <NotFoundCommandMessage />}
       </div>
     </Container>
   );

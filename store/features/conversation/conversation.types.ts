@@ -5,7 +5,8 @@ export type MessageAction =
   | "text"
   | "/product"
   | "/greeting"
-  | "/help";
+  | "/help"
+  | "not-found-command";
 
 export interface MessageProps {
   id: number;
