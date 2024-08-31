@@ -33,7 +33,7 @@ const Container = styled.div`
 
   @media (min-width: 701px) {
     right: 3rem;
-    bottom: 3rem;
+    bottom: 5rem;
     border-radius: 8px;
     width: min(100%, 350px);
     min-height: 500px;

@@ -5,7 +5,7 @@ const FabButton = styled.button`
   --offset: 100px;
 
   position: fixed;
-  bottom: 3rem;
+  bottom: 5rem;
   right: 3rem;
 
   background-color: var(--color-primary);
