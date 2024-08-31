@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Chat Application
 
-## Getting Started
+## Overview
 
-First, run the development server:
+- This chat applications lists suggested products for you.
+- ### **Example**
+- - If you type **/select** you'll see categories then select any category you want.
+- - ![image1](https://i.hizliresim.com/pkeqox3.png)
+- - ![image2](https://i.hizliresim.com/dwus686.png)
 
-```bash
-npm run dev
-# or
+- Click the product for details
+- - ![image3](https://i.hizliresim.com/ps62u55.png)
+
+
+- If you need help type **/help**
+- - ![image4](https://i.hizliresim.com/myryhqq.png)
+
+- For find the spesific product by id type **/image {id}**
+- - ![image5](https://i.hizliresim.com/iobtnv3.png)
+
+- ## Suggestions
+
+- - Type at least 3 letter for list the suggestions.
+- - ![image5](https://i.hizliresim.com/4h5wa8e.png)
+
+
+# Installation & Setup
+
+```
+yarn install
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Run Tests
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `yarn cy:open`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Linter
 
-## Learn More
+- `yarn lint`
+- `yarn type-check`
 
-To learn more about Next.js, take a look at the following resources:
+# Third Party Libs
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **State Management**: Redux
+- **Styles**: Styled Components
+- **Ci**: Husky
