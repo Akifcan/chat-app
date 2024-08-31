@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Image from "next/image";
 import { ProductProps } from "@/store/features/conversation/conversation.types";
+import { useAppDispatch } from "@/store";
+import { addNewMessage } from "@/store/features/conversation/conversation.slice";
 
 const ProductWrapper = styled.div`
   display: flex;
@@ -17,6 +19,7 @@ const ProductMeta = styled.div`
   color: white;
   flex: 1;
   transition: background-color 400ms linear;
+  cursor: pointer;
 
   &:hover {
     background-color: var(--color-secondary);
@@ -33,10 +36,29 @@ const ProductImage = styled.div`
 `;
 
 export default function ProductCard({
+  useRedirectToProductDetail = true,
   product,
-}: Readonly<{ product: ProductProps }>): JSX.Element {
+}: Readonly<{
+  product: ProductProps;
+  useRedirectToProductDetail?: boolean;
+}>): JSX.Element {
+  const dispatch = useAppDispatch();
+
+  const handleProductCardClick = () => {
+    if (!useRedirectToProductDetail) {
+      return;
+    }
+    dispatch(
+      addNewMessage({
+        from: "bot",
+        id: Math.random(),
+        action: `/image ${product.id}`,
+      })
+    );
+  };
+
   return (
-    <ProductWrapper>
+    <ProductWrapper onClick={handleProductCardClick}>
       <ProductImage>
         <Image src={product.images[0]} fill sizes="100%" alt={product.name} />
       </ProductImage>
