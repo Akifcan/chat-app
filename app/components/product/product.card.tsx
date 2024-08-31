@@ -20,7 +20,7 @@ const ProductMeta = styled.div`
   flex: 1;
   transition: background-color 400ms linear;
   cursor: pointer;
-
+  text-transform: capitalize;
   &:hover {
     background-color: var(--color-secondary);
   }

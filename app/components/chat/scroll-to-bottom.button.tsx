@@ -15,6 +15,9 @@ const buttonInAnim = keyframes`
 `;
 
 const Button = styled.button`
+  position: absolute;
+  cursor: pointer;
+  bottom: 60px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -36,7 +39,7 @@ export default function ScrollToBottomButton({
   };
 
   return (
-    <div ref={element} className="flex justify-content-center p-half">
+    <div ref={element} className="flex justify-content-center">
       <Button onClick={handleClick} aria-label="Click to scroll down">
         <ScrollDownIcon />
       </Button>
