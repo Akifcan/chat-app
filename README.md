@@ -22,13 +22,16 @@
 - For find the spesific product by id type **/image {id}**
 - - ![image5](https://i.hizliresim.com/iobtnv3.png)
 
+- For list the suggested products by id type **/product**
+- - ![image6](https://i.hizliresim.com/q0xmvzo.png)
+
 - ## Suggestions
 
 - - Type at least 3 letter for list the suggestions.
-- - ![image5](https://i.hizliresim.com/4h5wa8e.png)
+- - ![image7](https://i.hizliresim.com/4h5wa8e.png)
 
 - Auto Complete
-- - ![image6](https://i.hizliresim.com/l77rgmj.png)
+- - ![image8](https://i.hizliresim.com/l77rgmj.png)
 
 # Installation & Setup
 
@@ -60,4 +63,4 @@ yarn dev
 
 # Test Results:
 
-- - ![image7](https://i.hizliresim.com/6k8yzj2.png)
+- - ![image9](https://i.hizliresim.com/6k8yzj2.png)
