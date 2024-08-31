@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import ScrollDownIcon from "./icons/scroll-down.icon";
 import styles from "./chat.module.css";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const buttonInAnim = keyframes`
     from {

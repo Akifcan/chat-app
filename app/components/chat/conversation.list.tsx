@@ -28,11 +28,11 @@ export default function ConversationList(): JSX.Element {
   const [isScrollEnd, setScrolEnd] = useState(true);
 
   const handleScroll = () => {
-    const FULL_SCREEN_NOT_NEEDED =
+    const FULL_SCROLL_NOT_NEEDED =
       lastAction?.startsWith("/category") ||
       lastAction?.startsWith("/image") ||
       lastAction?.startsWith("/product");
-    if (FULL_SCREEN_NOT_NEEDED) {
+    if (FULL_SCROLL_NOT_NEEDED) {
       setTimeout(() => {
         const lastElement =
           document.getElementById("conversation-list")?.lastElementChild;

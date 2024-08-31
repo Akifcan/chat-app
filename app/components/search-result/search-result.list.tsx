@@ -55,7 +55,10 @@ const SuggesstedItem = styled.button`
 export default function SearchResultList({
   onSuggesstionClick,
   query,
-}: Readonly<{ query: string; onSuggesstionClick: () => void }>): JSX.Element {
+}: Readonly<{
+  query: string;
+  onSuggesstionClick: () => void;
+}>): JSX.Element | null {
   const debounceRef = useRef<NodeJS.Timeout>();
   const [products, setProducts] = useState<ProductProps[]>([]);
   const dispatch = useAppDispatch();
@@ -83,7 +86,7 @@ export default function SearchResultList({
   useEffect(handleSearch, [query]);
 
   if (products.length === 0) {
-    return <></>;
+    return null;
   }
 
   return (

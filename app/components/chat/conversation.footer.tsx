@@ -118,7 +118,7 @@ export default function ConversationFooter(): JSX.Element {
 
   return (
     <div className="flex column" style={{ gap: ".4rem" }}>
-      {text.length > 3 && (
+      {text.length >= 3 && (
         <SearchResultList onSuggesstionClick={clearForm} query={text} />
       )}
       <Form onSubmit={handleSubmit}>
