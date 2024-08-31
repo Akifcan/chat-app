@@ -53,9 +53,9 @@ const SuggesstedItem = styled.button`
 `;
 
 export default function SearchResultList({
-  onSuggesstinClick,
+  onSuggesstionClick,
   query,
-}: Readonly<{ query: string; onSuggesstinClick: () => void }>): JSX.Element {
+}: Readonly<{ query: string; onSuggesstionClick: () => void }>): JSX.Element {
   const debounceRef = useRef<NodeJS.Timeout>();
   const [products, setProducts] = useState<ProductProps[]>([]);
   const dispatch = useAppDispatch();
@@ -76,7 +76,7 @@ export default function SearchResultList({
         action: `/image ${product.id}`,
       })
     );
-    onSuggesstinClick();
+    onSuggesstionClick();
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

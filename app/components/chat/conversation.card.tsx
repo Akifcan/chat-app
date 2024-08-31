@@ -21,6 +21,7 @@ const Container = styled.div<{ $position?: Position }>`
   flex-wrap: wrap;
   position: relative;
   gap: 2rem;
+  scroll-margin: 100px;
   background-color: ${(props) =>
     props.$position === "left" ? "thistle" : "rgb(214, 162, 214)"};
   flex-direction: ${(props) =>
@@ -51,7 +52,10 @@ export default function ConversationCard({
     message.action && message.action.match(CATEGORY_QUERY_REGEX);
 
   return (
-    <Container $position={message.from === "bot" ? "left" : "right"}>
+    <Container
+      $position={message.from === "bot" ? "left" : "right"}
+      className="conversation-card"
+    >
       <Avatar $position={message.from === "bot" ? "left" : "right"} />
       <div className="flex-1">
         {message.text && (

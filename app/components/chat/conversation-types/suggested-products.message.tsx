@@ -5,11 +5,9 @@ import {
   categoriesData,
   productsData,
 } from "@/store/features/conversation/conversation.data";
-import { useScrollDown } from "@/app/hooks/use-scroll-down";
 
 export default function SuggestedProductsMessage(): JSX.Element {
   const [products, setProducts] = useState<ProductProps[]>();
-  const { scrollToBottom } = useScrollDown("conversation-list");
 
   const handleSuggestions = () => {
     const productList: ProductProps[] = [];
@@ -25,7 +23,6 @@ export default function SuggestedProductsMessage(): JSX.Element {
     }
 
     setProducts(productList);
-    scrollToBottom(200);
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

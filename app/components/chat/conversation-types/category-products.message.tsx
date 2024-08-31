@@ -8,7 +8,6 @@ import {
   categoriesData,
   productsData,
 } from "@/store/features/conversation/conversation.data";
-import { useScrollDown } from "@/app/hooks/use-scroll-down";
 import { parseId } from "@/app/utils";
 import Alert from "../../alert/alert";
 
@@ -18,7 +17,6 @@ export default function CategoryProductsMessage({
   const CATEGORY_ID = parseId(command);
 
   const [products, setProducts] = useState<ProductProps[]>();
-  const { scrollToBottom } = useScrollDown("conversation-list");
 
   const handleSuggestions = () => {
     const currentProducts = productsData?.filter(
@@ -26,7 +24,6 @@ export default function CategoryProductsMessage({
     );
 
     setProducts(currentProducts);
-    scrollToBottom(200);
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

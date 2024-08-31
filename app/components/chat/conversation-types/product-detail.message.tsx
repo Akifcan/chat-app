@@ -8,7 +8,6 @@ import Alert from "../../alert/alert";
 import ProductCard from "../../product/product.card";
 import styled from "styled-components";
 import Image from "next/image";
-import { useScrollDown } from "@/app/hooks/use-scroll-down";
 import { parseId } from "@/app/utils";
 
 const ImageCard = styled.div`
@@ -25,7 +24,6 @@ export default function ProductDetailMessage({
 }: Readonly<QueryProps>): JSX.Element {
   const PRODUCT_ID = parseId(command);
   const [product, setProduct] = useState<ProductProps | null>();
-  const { scrollToBottom } = useScrollDown("conversation-list");
 
   const handleProductDetail = () => {
     const currentProduct = productsData.find(
@@ -36,7 +34,6 @@ export default function ProductDetailMessage({
       return setProduct(null);
     }
     setProduct(currentProduct);
-    scrollToBottom(200);
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

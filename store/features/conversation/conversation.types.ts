@@ -1,4 +1,5 @@
 export type MessageFrom = "user" | "bot";
+export type ScrollAction = "half" | "full";
 
 export type MessageAction =
   | "/select"

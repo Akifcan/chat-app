@@ -1,9 +1,9 @@
 import { useAppSelector } from "@/store";
-import styles from "./chat.module.css";
 import ConversationCard from "./conversation.card";
 import styled from "styled-components";
-import { useEffect } from "react";
 import { useScrollDown } from "@/app/hooks/use-scroll-down";
+import { useEffect } from "react";
+import { selectLastAction } from "@/store/features/conversation/conversation.slice";
 
 const Container = styled.div`
   flex: 1;
@@ -18,13 +18,35 @@ const Container = styled.div`
 
 export default function ConversationList(): JSX.Element {
   const messages = useAppSelector((state) => state.conversation.messages);
+  const lastAction = useAppSelector(selectLastAction);
 
   const { scrollToBottom } = useScrollDown("conversation-list");
 
-  useEffect(() => {
-    scrollToBottom();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [messages]);
+  const handleScroll = () => {
+    const FULL_SCREEN_NOT_NEEDED =
+      lastAction?.startsWith("/category") ||
+      lastAction?.startsWith("/image") ||
+      lastAction?.startsWith("/product");
+    if (FULL_SCREEN_NOT_NEEDED) {
+      setTimeout(() => {
+        const lastElement = document.querySelector(
+          ".conversation-card:last-child"
+        );
+        if (!lastElement) {
+          return;
+        }
+        lastElement.scrollIntoView({
+          block: "start",
+          behavior: "smooth",
+        });
+      }, 400);
+      return;
+    }
+
+    scrollToBottom(0);
+  };
+
+  useEffect(handleScroll, [messages]);
 
   return (
     <Container id="conversation-list">

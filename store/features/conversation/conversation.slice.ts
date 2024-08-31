@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ConversationState, MessageProps } from "./conversation.types";
+import { RootState } from "@/store";
 
 const initialState: ConversationState = {
   messages: [
@@ -22,5 +23,8 @@ export const conversationSlice = createSlice({
 });
 
 export const { addNewMessage } = conversationSlice.actions;
+
+export const selectLastAction = (state: RootState) =>
+  state.conversation.messages[state.conversation.messages.length - 1].action;
 
 export default conversationSlice.reducer;

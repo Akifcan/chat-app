@@ -119,7 +119,7 @@ export default function ConversationFooter(): JSX.Element {
   return (
     <div className="flex column" style={{ gap: ".4rem" }}>
       {text.length > 3 && (
-        <SearchResultList onSuggesstinClick={clearForm} query={text} />
+        <SearchResultList onSuggesstionClick={clearForm} query={text} />
       )}
       <Form onSubmit={handleSubmit}>
         <datalist id="commands">
