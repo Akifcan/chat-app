@@ -36,7 +36,7 @@ export default function SelectCategoryMessage(): JSX.Element {
       addNewMessage({
         from: "bot",
         id: Math.random(),
-        action: `/product ${category.id}`,
+        action: `/category ${category.id}`,
       })
     );
   };

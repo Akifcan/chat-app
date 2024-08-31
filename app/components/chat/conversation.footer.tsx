@@ -5,6 +5,7 @@ import { addNewMessage } from "@/store/features/conversation/conversation.slice"
 import { MessageAction } from "@/store/features/conversation/conversation.types";
 import styled from "styled-components";
 import { IMAGE_QUERY_REGEX } from "@/store/features/conversation/conversation.queries";
+import SearchResultList from "../search-result/search-result.list";
 
 const Form = styled.form`
   display: flex;
@@ -35,6 +36,8 @@ const Input = styled.input`
 export default function ConversationFooter(): JSX.Element {
   const dispatch = useAppDispatch();
   const [text, setText] = useState("");
+
+  const clearForm = () => setText("");
 
   const handleBotResponse = (text: string) => {
     const action = text as MessageAction;
@@ -110,34 +113,39 @@ export default function ConversationFooter(): JSX.Element {
       })
     );
     handleBotResponse(text);
-    setText("");
+    clearForm();
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <datalist id="commands">
-        <option value="/help"></option>
-        <option value="/greeting"></option>
-        <option value="/product"></option>
-        <option value="/select"></option>
-      </datalist>
-      <Input
-        list="commands"
-        autoComplete="true"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        maxLength={100}
-        placeholder="Enter your text here..."
-        type="text"
-      />
-      <SendMessageButton
-        disabled={!text.length}
-        aria-label="Click this button for send the your message"
-        title="Click this button for send the your message"
-        type="submit"
-      >
-        <SendIcon />
-      </SendMessageButton>
-    </Form>
+    <div className="flex column" style={{ gap: ".4rem" }}>
+      {text.length > 3 && (
+        <SearchResultList onSuggesstinClick={clearForm} query={text} />
+      )}
+      <Form onSubmit={handleSubmit}>
+        <datalist id="commands">
+          <option value="/help"></option>
+          <option value="/greeting"></option>
+          <option value="/product"></option>
+          <option value="/select"></option>
+        </datalist>
+        <Input
+          list="commands"
+          autoComplete="true"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          maxLength={100}
+          placeholder="Enter your text here..."
+          type="text"
+        />
+        <SendMessageButton
+          disabled={!text.length}
+          aria-label="Click this button for send the your message"
+          title="Click this button for send the your message"
+          type="submit"
+        >
+          <SendIcon />
+        </SendMessageButton>
+      </Form>
+    </div>
   );
 }

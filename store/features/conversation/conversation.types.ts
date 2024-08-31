@@ -32,3 +32,7 @@ export interface MessageProps {
 export interface ConversationState {
   messages: MessageProps[];
 }
+
+export interface QueryProps {
+  command: string;
+}

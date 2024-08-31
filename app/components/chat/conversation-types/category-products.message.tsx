@@ -1,4 +1,7 @@
-import { ProductProps } from "@/store/features/conversation/conversation.types";
+import {
+  ProductProps,
+  QueryProps,
+} from "@/store/features/conversation/conversation.types";
 import { useEffect, useState } from "react";
 import ProductCard from "../../product/product.card";
 import {
@@ -6,25 +9,23 @@ import {
   productsData,
 } from "@/store/features/conversation/conversation.data";
 import { useScrollDown } from "@/app/hooks/use-scroll-down";
+import { parseId } from "@/app/utils";
+import Alert from "../../alert/alert";
 
-export default function SuggestedProductsMessage(): JSX.Element {
+export default function CategoryProductsMessage({
+  command,
+}: Readonly<QueryProps>): JSX.Element {
+  const CATEGORY_ID = parseId(command);
+
   const [products, setProducts] = useState<ProductProps[]>();
   const { scrollToBottom } = useScrollDown("conversation-list");
 
   const handleSuggestions = () => {
-    const productList: ProductProps[] = [];
-    const categoryIds = categoriesData.map((category) => category.id);
+    const currentProducts = productsData?.filter(
+      (x) => x.categoryId === CATEGORY_ID
+    );
 
-    for (const id in categoryIds) {
-      const currentProduct = productsData?.find(
-        (x) => x.categoryId === Number(id)
-      );
-      if (currentProduct) {
-        productList.push(currentProduct);
-      }
-    }
-
-    setProducts(productList);
+    setProducts(currentProducts);
     scrollToBottom(200);
   };
 
@@ -36,6 +37,12 @@ export default function SuggestedProductsMessage(): JSX.Element {
       <p>
         <b>Please wait your suggestions loading...</b>
       </p>
+    );
+  }
+
+  if (products.length === 0) {
+    return (
+      <Alert type="info">Sorry but, no product found for this category</Alert>
     );
   }
 

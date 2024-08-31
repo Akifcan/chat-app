@@ -1,11 +1,15 @@
 import { productsData } from "@/store/features/conversation/conversation.data";
-import { ProductProps } from "@/store/features/conversation/conversation.types";
+import {
+  ProductProps,
+  QueryProps,
+} from "@/store/features/conversation/conversation.types";
 import { useEffect, useState } from "react";
 import Alert from "../../alert/alert";
 import ProductCard from "../../product/product.card";
 import styled from "styled-components";
 import Image from "next/image";
 import { useScrollDown } from "@/app/hooks/use-scroll-down";
+import { parseId } from "@/app/utils";
 
 const ImageCard = styled.div`
   width: 100%;
@@ -18,8 +22,8 @@ const ImageCard = styled.div`
 
 export default function ProductDetailMessage({
   command,
-}: Readonly<{ command: string }>): JSX.Element {
-  const PRODUCT_ID = Number(command.split(" ")[1]);
+}: Readonly<QueryProps>): JSX.Element {
+  const PRODUCT_ID = parseId(command);
   const [product, setProduct] = useState<ProductProps | null>();
   const { scrollToBottom } = useScrollDown("conversation-list");
 

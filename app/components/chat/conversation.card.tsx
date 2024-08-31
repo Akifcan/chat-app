@@ -5,8 +5,12 @@ import SelectCategoryMessage from "./conversation-types/select-category.message"
 import styled from "styled-components";
 import NotFoundCommandMessage from "./conversation-types/not-found-command.message";
 import SuggestedProductsMessage from "./conversation-types/suggested-products.message";
-import { IMAGE_QUERY_REGEX } from "@/store/features/conversation/conversation.queries";
+import {
+  CATEGORY_QUERY_REGEX,
+  IMAGE_QUERY_REGEX,
+} from "@/store/features/conversation/conversation.queries";
 import ProductDetailMessage from "./conversation-types/product-detail.message";
+import CategoryProductsMessage from "./conversation-types/category-products.message";
 
 type Position = "left" | "right";
 
@@ -43,6 +47,9 @@ export default function ConversationCard({
   const IS_IMAGE_QUERY =
     message.action && message.action.match(IMAGE_QUERY_REGEX);
 
+  const IS_CATEGORY_QUERY =
+    message.action && message.action.match(CATEGORY_QUERY_REGEX);
+
   return (
     <Container $position={message.from === "bot" ? "left" : "right"}>
       <Avatar $position={message.from === "bot" ? "left" : "right"} />
@@ -63,6 +70,9 @@ export default function ConversationCard({
 
         {/* For Queries */}
         {IS_IMAGE_QUERY && <ProductDetailMessage command={message.action!} />}
+        {IS_CATEGORY_QUERY && (
+          <CategoryProductsMessage command={message.action!} />
+        )}
       </div>
     </Container>
   );

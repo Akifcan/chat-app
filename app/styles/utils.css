@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.wrap {
+  flex-wrap: wrap;
+}
+
 .column {
   flex-direction: column;
 }
@@ -14,6 +18,29 @@
   margin-block-end: 1rem;
 }
 
+.pb-1 {
+  padding-block-end: 1rem;
+}
+
+.pb-half {
+  padding-block-end: 0.5em;
+  transition: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+}
+
 .selectable-text {
   user-select: all;
+}
+
+.scroll-x {
+  overflow-x: auto;
+}
+
+.scroll-x::-webkit-scrollbar {
+  height: 4px;
+  background-color: var(--color-secondary);
+}
+
+/* Handle */
+.scroll-x::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
 }
