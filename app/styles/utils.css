@@ -6,6 +6,10 @@
   display: flex;
 }
 
+.justify-content-center {
+  justify-content: center;
+}
+
 .wrap {
   flex-wrap: wrap;
 }
@@ -20,6 +24,10 @@
 
 .pb-1 {
   padding-block-end: 1rem;
+}
+
+.p-half {
+  padding-block: 0.5rem;
 }
 
 .pb-half {

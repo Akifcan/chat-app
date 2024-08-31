@@ -6,7 +6,7 @@ import SearchIcon from "./icons/search.icon";
 import { useAppDispatch } from "@/store";
 import { addNewMessage } from "@/store/features/conversation/conversation.slice";
 
-const searchResultIn = keyframes`
+const searchResultInAnim = keyframes`
     from {
         transform: scale(0);
         opacity: 0;
@@ -26,7 +26,7 @@ const Container = styled.div`
   border-radius: 8px;
   background-color: white;
   padding: 0.3rem;
-  animation: ${searchResultIn} 500ms cubic-bezier(0.895, 0.03, 0.685, 0.22)
+  animation: ${searchResultInAnim} 500ms cubic-bezier(0.895, 0.03, 0.685, 0.22)
     forwards;
 `;
 

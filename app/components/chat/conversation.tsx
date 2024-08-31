@@ -20,6 +20,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   animation: ${conversationInAnim} 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  background-color: white;
 
   @media (max-width: 700px) {
     top: 0;
