@@ -58,7 +58,7 @@ export default function ProductCard({
   };
 
   return (
-    <ProductWrapper onClick={handleProductCardClick}>
+    <ProductWrapper data-testid="product-card" onClick={handleProductCardClick}>
       <ProductImage>
         <Image src={product.images[0]} fill sizes="100%" alt={product.name} />
       </ProductImage>

@@ -14,5 +14,9 @@ export default function Alert({
   children,
   type,
 }: Readonly<{ type: AlertType; children: ReactNode }>): JSX.Element {
-  return <Container $type={type}>{children}</Container>;
+  return (
+    <Container data-testid="alert" $type={type}>
+      {children}
+    </Container>
+  );
 }

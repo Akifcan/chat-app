@@ -31,6 +31,7 @@ const Input = styled.input`
   text-indent: 10px;
   border-bottom-left-radius: var(--radius);
   border: 2px solid var(--color-primary);
+  padding-inline-end: 1rem;
 `;
 
 export default function ConversationFooter(): JSX.Element {
@@ -121,7 +122,7 @@ export default function ConversationFooter(): JSX.Element {
       {text.length >= 3 && (
         <SearchResultList onSuggesstionClick={clearForm} query={text} />
       )}
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} data-testid="submit-form">
         <datalist id="commands">
           <option value="/help"></option>
           <option value="/greeting"></option>
@@ -129,6 +130,7 @@ export default function ConversationFooter(): JSX.Element {
           <option value="/select"></option>
         </datalist>
         <Input
+          data-testid="chat-input"
           list="commands"
           autoComplete="true"
           value={text}
@@ -138,6 +140,7 @@ export default function ConversationFooter(): JSX.Element {
           type="text"
         />
         <SendMessageButton
+          data-testid="send-message-button"
           disabled={!text.length}
           aria-label="Click this button for send the your message"
           title="Click this button for send the your message"

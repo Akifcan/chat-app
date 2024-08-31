@@ -40,7 +40,11 @@ export default function ScrollToBottomButton({
 
   return (
     <div ref={element} className="flex justify-content-center">
-      <Button onClick={handleClick} aria-label="Click to scroll down">
+      <Button
+        data-testid="scroll-to-bottom-button"
+        onClick={handleClick}
+        aria-label="Click to scroll down"
+      >
         <ScrollDownIcon />
       </Button>
     </div>

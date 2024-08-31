@@ -90,11 +90,12 @@ export default function SearchResultList({
   }
 
   return (
-    <Container>
+    <Container data-testid="search-results">
       <b>Search Suggestions</b>
       <div className="flex scroll-x pb-half" style={{ gap: ".4rem" }}>
         {products.map((product) => (
           <SuggesstedItem
+            data-testid="suggested-item"
             key={product.id}
             onClick={() => handleProductDetail(product)}
           >

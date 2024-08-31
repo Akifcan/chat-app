@@ -55,7 +55,7 @@ export default function ProductDetailMessage({
 
   return (
     <div
-      data-testid="product-detail"
+      data-testid="product-detail-card"
       className="flex column"
       style={{ gap: "1rem" }}
     >
