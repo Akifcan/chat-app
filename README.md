@@ -1,9 +1,14 @@
 # Chat Application
 
+## Link: https://chat-ngh2ib9q5-akif-2d444699.vercel.app
+
 ## Overview
 
 - This chat application lists suggested products for you.
 - ### **Example**
+
+- Click the fab button for open the chat window.
+
 - - If you type **/select** you'll see categories then select any category you want.
 - - ![image1](https://i.hizliresim.com/pkeqox3.png)
 - - ![image2](https://i.hizliresim.com/dwus686.png)
