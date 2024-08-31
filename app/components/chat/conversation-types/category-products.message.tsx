@@ -39,12 +39,18 @@ export default function CategoryProductsMessage({
 
   if (products.length === 0) {
     return (
-      <Alert type="info">Sorry but, no product found for this category</Alert>
+      <Alert data-testid="alert" type="info">
+        Sorry but, no product found for this category
+      </Alert>
     );
   }
 
   return (
-    <div className="flex column" style={{ gap: "1rem" }}>
+    <div
+      className="flex column"
+      style={{ gap: "1rem" }}
+      data-testid="categories-product"
+    >
       {products.map((product) => (
         <ProductCard product={product} key={product.id} />
       ))}

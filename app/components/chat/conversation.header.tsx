@@ -41,6 +41,7 @@ export default function ConversationHeader({
     <Container>
       <h2>Chat</h2>
       <CloseButton
+        data-testid="close-chat-button"
         onClick={handleClose}
         aria-label="Click for close the chat window"
         title="Click for close the chat window"

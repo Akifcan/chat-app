@@ -47,7 +47,7 @@ export default function Conversation({
   onClose,
 }: Readonly<{ onClose: () => void }>): JSX.Element {
   return (
-    <Container id="conversation">
+    <Container id="conversation" data-testid="conversation">
       <ConversationHeader onClose={onClose} />
       <ConversationList />
       <ConversationFooter />

@@ -1,6 +1,6 @@
 export default function HelpMessage(): JSX.Element {
   return (
-    <ul>
+    <ul data-testid="help">
       <li>
         For view categories please type{" "}
         <b className="selectable-text">/select</b>.

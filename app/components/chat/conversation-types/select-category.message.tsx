@@ -42,7 +42,11 @@ export default function SelectCategoryMessage(): JSX.Element {
   };
 
   return (
-    <div className="flex column" style={{ gap: ".3rem" }}>
+    <div
+      data-testid="categories"
+      className="flex column"
+      style={{ gap: ".3rem" }}
+    >
       {categoriesData.map((category) => (
         <SelectItem
           key={category.id}

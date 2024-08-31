@@ -23,15 +23,21 @@
 //
 //
 // -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add("openChatWindow", () => {
+  const button = cy.get("[data-testid='fab-button']");
+  button.should("be.visible");
+  button.click();
+  cy.get("[data-testid='conversation']").should("be.visible");
+});
+
+Cypress.Commands.add("getByTestId", (selector, ...args) => {
+  return cy.get(`[data-testid=${selector}]`, ...args);
+});
+
 //
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+declare namespace Cypress {
+  interface Chainable {
+    openChatWindow(): Chainable;
+    getByTestId(selector: string): Chainable;
+  }
+}

@@ -50,7 +50,11 @@ export default function Fab({
   onOpen,
 }: Readonly<{ onOpen: () => void }>): JSX.Element {
   return (
-    <FabButton onClick={onOpen} aria-label="Click to start chat">
+    <FabButton
+      data-testid="fab-button"
+      onClick={onOpen}
+      aria-label="Click to start chat"
+    >
       <AssistantIcon />
     </FabButton>
   );

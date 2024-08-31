@@ -54,7 +54,11 @@ export default function ProductDetailMessage({
   }
 
   return (
-    <div className="flex column" style={{ gap: "1rem" }}>
+    <div
+      data-testid="product-detail"
+      className="flex column"
+      style={{ gap: "1rem" }}
+    >
       <ProductCard product={product} useRedirectToProductDetail={false} />
       {product.images.map((image, index) => (
         <ImageCard key={index}>

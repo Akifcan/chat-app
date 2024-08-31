@@ -37,7 +37,11 @@ export default function SuggestedProductsMessage(): JSX.Element {
   }
 
   return (
-    <div className="flex column" style={{ gap: "1rem" }}>
+    <div
+      data-testid="suggested-products"
+      className="flex column"
+      style={{ gap: "1rem" }}
+    >
       {products.map((product) => (
         <ProductCard product={product} key={product.id} />
       ))}

@@ -1,6 +1,6 @@
 export default function GreetingMessage(): JSX.Element {
   return (
-    <div>
+    <div data-testid="greeting-message">
       <p>Hello 🙂</p>
       <hr />
       <ul>
