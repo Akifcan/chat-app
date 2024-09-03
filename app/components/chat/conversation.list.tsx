@@ -7,10 +7,9 @@ import { selectLastAction } from "@/store/features/conversation/conversation.sli
 import ScrollToBottomButton from "./scroll-to-bottom.button";
 
 const Container = styled.div`
-  flex: 1;
   background-color: white;
   overflow-y: auto;
-
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1rem;
